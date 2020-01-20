@@ -15,7 +15,7 @@ export class Exemple4Component implements OnInit {
 
 
 
-  obs2: Observable<string>;
+  obs2: Observable<string>; 
 
   obs3: Observable<Training>;
 
@@ -23,9 +23,9 @@ export class Exemple4Component implements OnInit {
 
   obs5: Observable<Training>;
 
-  obs6: Observable<Training>;
+  obs6: Observable<any>;
 
-  obs7: Observable<Training>;
+  obs7: Observable<any>;
 
   obs8: Observable<Training>;
 
@@ -41,13 +41,13 @@ export class Exemple4Component implements OnInit {
     this.obs4 = $ser.getData().pipe(take(2));
     this.obs5 = $ser.getData().pipe(delay(1000));
     this.obs6 = $ser.getData().pipe(
-      mergeMap(x => timer(1000).pipe(map(s => x)))
+      mergeMap(x => timer(5000).pipe(map(s => x)))
     );
     this.obs7 = $ser.getData().pipe(
-      switchMap(x => timer(1000).pipe(map(s => x)))
+      switchMap(x => timer(5000).pipe(map(s => x)))
     );
     this.obs8 = $ser.getData().pipe(
-      concatMap(x => timer(1000).pipe(map(s => x)))
+      concatMap(x => timer(5000).pipe(map(s => x)))
     );
   }
 

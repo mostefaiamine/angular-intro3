@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Training } from 'src/app/model/training';
 import { HttpClient } from '@angular/common/http';
 import { CountryService } from 'src/app/services/country/country.service';
+import { Country } from 'src/app/model/country';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { CountryService } from 'src/app/services/country/country.service';
 })
 export class Exemple6Component implements OnInit {
 
-  data: any;
+  data: Country[];
 
   constructor(private $ser: CountryService) { }
 
@@ -22,7 +23,10 @@ export class Exemple6Component implements OnInit {
   getData() {
     this.$ser.getData().subscribe(
       s => this.data = s,
-      error => alert('error !!')
+      error => {
+        alert('error !!' + error.status);
+        console.log(error);
+      }
 
     );
   }

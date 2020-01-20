@@ -1,5 +1,6 @@
 <app-header [title]="'Functions'"></app-header>
 <h2>Function of</h2>
+obs4 : {{obs4 | async}}
 <ul *ngFor="let i of obs1 | async">
    <li>{{i}}</li>
 </ul>

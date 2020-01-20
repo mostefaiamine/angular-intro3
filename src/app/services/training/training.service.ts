@@ -25,7 +25,9 @@ export class TrainingService {
     this.$observable = new Observable<Training[]>(obs => {
       this.$observer = obs;
       this.$observer.next(this.$data);
-    });
+    }).pipe(
+      share()
+    );
     this.$subject = new ReplaySubject<Training[]>();
     this.$subject.next(this.$data);
   }
@@ -47,6 +49,6 @@ export class TrainingService {
   }
 
   public get observable(): Observable<Training[]> {
-    return this.$observable;
+    return this.$subject    ;
   }
 }

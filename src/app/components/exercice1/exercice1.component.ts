@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Action } from 'src/app/model/actions';
+import { interval } from 'rxjs';
+import { MovieService } from 'src/app/services/movie/movie.service';
+import { error } from 'protractor';
+
 
 
 
@@ -10,26 +13,24 @@ import { Action } from 'src/app/model/actions';
 })
 export class Exercice1Component implements OnInit {
 
-  actions: Action[];
 
-  action2: Action[];
 
-  constructor() { }
 
-  actionClicked(a: Action) {
-    alert(`Vous avez cliqué ${a.title}`);
+  constructor(private $ser: MovieService) { }
+
+  click() {
+    this.$ser.GetData().subscribe(
+      s => alert('OK'),
+      err => {
+        alert('error');
+        console.log(err);
+      }
+    );
   }
 
   ngOnInit() {
-    this.actions = [
-      { title: 'Fichier', icon: 'file' },
-      { title: 'Edition', icon: 'edit' },
-      { title: 'Enregistrer', icon: 'save' }
-    ];
-    this.action2 = [
-      { title: 'Facebook', icon: 'fb' },
-      { title: 'Twitter', icon: 'twitter' }
-    ];
+
+
   }
 }
 

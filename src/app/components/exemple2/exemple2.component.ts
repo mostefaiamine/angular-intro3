@@ -4,7 +4,7 @@ import { Observable, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-exemple2',
   templateUrl: './exemple2.component.html',
-  styleUrls: ['./exemple2.component.scss']
+  styleUrls: ['./exemple2.component.scss'] 
 })
 export class Exemple2Component implements OnInit {
 

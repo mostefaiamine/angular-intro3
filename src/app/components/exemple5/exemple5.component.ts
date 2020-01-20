@@ -13,7 +13,7 @@ export class Exemple5Component implements OnInit {
 
   constructor(private $ser: TrainingService) {
     $ser.getList().subscribe(s => this.data = s);
-  }
+  } 
 
   ngOnInit() {
   }

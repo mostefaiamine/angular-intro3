@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-exemple1',
@@ -10,15 +10,26 @@ export class Exemple1Component implements OnInit {
 
   data: Array<any> = [];
 
+  i = 0;
+
   $observable: Observable<string>;
+
+  private $observer: Observer<string>;
 
 
 
   constructor() {
-    this.$observable = new Observable(observer => {
-      observer.next('Salam');
-      observer.next('Alikoum');
+    this.$observable = new Observable(obs => {
+      this.data.push(`Hello ${this.i++}`);
+      console.log('C est bon, vous avez un observer !');
+      this.$observer = obs;
     });
+  }
+
+  changed(val: string) {
+    if (this.$observer) {
+      this.$observer.next(val);
+    }
   }
 
   click() {
