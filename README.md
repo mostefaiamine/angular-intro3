@@ -1,4 +1,4 @@
-# Lab 1 : Observables !
+# Lab 3 : Observables !
 
 Chouettes, des exercices !
 
